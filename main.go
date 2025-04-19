@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	controllers "golangwithgin/controllers"
+	controller "golangwithgin/controllers"
 	internal "golangwithgin/internal/database"
 	"golangwithgin/services"
 
@@ -20,10 +20,12 @@ func main() {
 		fmt.Print("Error at DB Connection")
 	}
 
+	// Initial DB Structure Loading
 	userServices := &services.Userservices{}
 	userServices.InitService(db)
 
-	usercontroller := &controllers.Usercontroller{}
+	//Initial Services
+	usercontroller := &controller.Usercontroller{}
 	usercontroller.InitUsercontrollerRoutes(r, *userServices)
 
 	// r.GET("/ping", func(c *gin.Context) {
